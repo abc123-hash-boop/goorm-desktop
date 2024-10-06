@@ -34,9 +34,9 @@ class CRDSetup:
     @staticmethod
     def installDesktopEnvironment():
         os.system("export DEBIAN_FRONTEND=noninteractive")
-        os.system("apt install --assume-yes xfce4 desktop-base xfce4-terminal")
+        os.system("apt install --assume-yes xfce4 desktop-base")
         os.system("bash -c 'echo \"exec /etc/X11/Xsession /usr/bin/xfce4-session\" > /etc/chrome-remote-desktop-session'")
-        os.system("apt remove --assume-yes gnome-terminal")
+        os.system("apt install gnome-terminal")
         os.system("apt install --assume-yes xscreensaver")
         os.system("sudo apt purge light-locker")
         os.system("sudo apt install --reinstall xfce4-screensaver")
@@ -52,12 +52,12 @@ class CRDSetup:
     
     @staticmethod
     def installTelegram():
-        subprocess.run(["apt", "install", "--assume-yes", "telegram-desktop"])
-        print("Telegram Installed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        subprocess.run(["apt", "install", "--assume-yes", "neofetch"])
+        print("Neofetch Installed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
     @staticmethod
     def changewall():
-        os.system(f"curl -s -L -k -o xfce-verticals.png https://gitlab.com/chamod12/changewallpaper-win10/-/raw/main/CachedImage_1024_768_POS4.jpg")
+        os.system(f"curl -s -L -k -o xfce-verticals.png https://raw.githubusercontent.com/abc123-hash-boop/goorm-desktop/refs/heads/main/wallpaper_minecraft_pc_bundle_2560x1440.png")
         current_directory = os.getcwd()
         custom_wallpaper_path = os.path.join(current_directory, "xfce-verticals.png")
         destination_path = '/usr/share/backgrounds/xfce/'
