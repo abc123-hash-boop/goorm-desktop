@@ -2,6 +2,7 @@ import os
 import subprocess
 import shutil
 
+
 username = "user" #@param {type:"string"}
 password = "user" #@param {type:"string"}
 os.system(f"useradd -m {username}")
@@ -25,7 +26,10 @@ class CRDSetup:
 
     @staticmethod
     def installCRD():
-        print("Build Started !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        subprocess.run(['wget', 'https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb'])
+        subprocess.run(['dpkg', '--install', 'chrome-remote-desktop_current_amd64.deb'])
+        subprocess.run(['apt', 'install', '--assume-yes', '--fix-broken'])
+        print("Chrome Remoted Desktop Installed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
     @staticmethod
     def installDesktopEnvironment():
@@ -69,4 +73,11 @@ class CRDSetup:
     @staticmethod
     def finish(user):
         if Autostart:
-            print("Build finished !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            os.makedirs(f"/home/{user}/.config/autostart", exist_ok=True)
+            link = "www.google.com"
+            colab_autostart = """[Desktop Entry]
+            print("Finalizing !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
+        
+except NameError as e:
+    print("'username' variable not found, Create a user first")
